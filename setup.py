@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
 HERE = pathlib.Path(__file__).parent
 
 VERSION = '0.0.1'
-PACKAGE_NAME = 'simple-ocr'
+PACKAGE_NAME = 'simply-ocr'
 AUTHOR = 'Jeroben Guzmán'
 AUTHOR_EMAIL = 'jeroguzman@gmail.com'
 URL = 'https://github.com/jeroguzman'

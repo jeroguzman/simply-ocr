@@ -1,4 +1,4 @@
-# Simple-ocr 0.0.1
+# Simply-ocr 0.0.1
 
 [By Jeroben Guzmán ](https://github.com/jeroguzman) 
 
@@ -17,7 +17,7 @@ For text extraction from images on a simple way / Para extraer texto de imagenes
 ## 📚 Examples
 
 ```
-from simple_ocr
+from simply_ocr import read_image_en, read_image_es
 
 read_image_en('test.jpg') #for english
 
