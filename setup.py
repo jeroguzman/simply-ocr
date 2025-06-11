@@ -3,21 +3,22 @@ from setuptools import find_packages, setup
 
 HERE = pathlib.Path(__file__).parent
 
-VERSION = '0.0.1'
+VERSION = '1.0.0'
 PACKAGE_NAME = 'simply-ocr'
 AUTHOR = 'Jeroben Guzmán'
 AUTHOR_EMAIL = 'jeroguzman@gmail.com'
 URL = 'https://github.com/jeroguzman'
 
 LICENSE = 'MIT'
-DESCRIPTION = 'Read text from images, using pytesseract and opencv'
+DESCRIPTION = 'Read text from images'
 LONG_DESCRIPTION = (HERE / "README.md").read_text(encoding='utf-8')
 LONG_DESC_TYPE = "text/markdown"
 
 INSTALL_REQUIRES = [
         'pytesseract',
         'opencv-python',
-        'scikit-image'
+        'scikit-image',
+        'matplotlib',
       ]
 
 setup(
