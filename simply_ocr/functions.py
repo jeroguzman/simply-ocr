@@ -1,7 +1,7 @@
 import cv2
 from skimage import io
 from pytesseract import pytesseract, Output
-from typing import Optional, List, Tuple, Dict, Any, Union
+from typing import Optional, Tuple, Dict, Any, Union
 import numpy as np
 import os
 
@@ -69,18 +69,6 @@ def read_image_en(image_path: str, **kwargs) -> Optional[str]:
 
 def read_image_es(image_path: str, **kwargs) -> Optional[str]:
     return read_image(image_path, lang='spa', **kwargs)
-
-def get_available_languages() -> List[str]:
-    try:
-        from pytesseract import get_languages
-        return get_languages(config='')
-    except Exception as e:
-        print(f"No se pudieron obtener los idiomas: {e}")
-        return []
-
-def read_image_multi_lang(image_path: str, langs: List[str], **kwargs) -> Optional[str]:
-    lang_str = '+'.join(langs)
-    return read_image(image_path, lang=lang_str, **kwargs)
 
 def save_text_to_file(text: str, output_path: str) -> None:
     with open(output_path, 'w', encoding='utf-8') as f:

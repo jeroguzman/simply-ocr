@@ -1,4 +1,4 @@
-# Simply-ocr 1.0.0
+# Simply-ocr 1.0.1
 
 [By Jeroben Guzmán ](https://github.com/jeroguzman)
 
@@ -44,21 +44,17 @@ pip install opencv-python scikit-image pytesseract matplotlib
 
 ```python
 from simply_ocr import (
-    read_image_en, read_image_es, read_image_multi_lang, get_available_languages,
-    save_text_to_file, show_preprocessed_image, read_image
+    read_image_en, read_image_es, get_available_languages,
+    save_text_to_file, show_preprocessed_image
 )
 
 # Extraer texto en inglés o español
 read_image_en('test.jpg')
 read_image_es('test.jpg')
 
-# Extraer texto en varios idiomas y obtener datos estructurados
-result = read_image_multi_lang('test.jpg', ['eng', 'spa'], return_data='dict')
-print(result['text'])
-
 # Extraer texto de una región específica y mostrar la imagen preprocesada
 roi = (100, 200, 300, 100)  # x, y, w, h
-texto = read_image('test.jpg', lang='eng', preprocess_opts={'roi': roi, 'binarize': True, 'remove_noise': True})
+texto = read_image_en('test.jpg', preprocess_opts={'roi': roi, 'binarize': True, 'remove_noise': True})
 show_preprocessed_image('test.jpg', preprocess_opts={'roi': roi})
 
 # Guardar el texto extraído en un archivo
@@ -77,7 +73,7 @@ print(get_available_languages())
 Extrae texto de facturas, recibos, contratos o cualquier documento escaneado para su almacenamiento o análisis automatizado.
 
 ```python
-texto = read_image('factura.png', lang='spa')
+texto = read_image_es('factura.png')
 print(texto)
 ```
 
@@ -85,35 +81,27 @@ print(texto)
 Ideal para extraer texto de fotos tomadas con el móvil, por ejemplo, carteles, pizarras o notas manuscritas.
 
 ```python
-texto = read_image('foto_pizarra.jpg', lang='spa', preprocess_opts={'binarize': True, 'remove_noise': True})
+texto = read_image_es('foto_pizarra.jpg', preprocess_opts={'binarize': True, 'remove_noise': True})
 ```
 
-### 3. Extracción de texto multilingüe
-Cuando una imagen contiene texto en varios idiomas (por ejemplo, etiquetas de productos internacionales).
-
-```python
-result = read_image_multi_lang('etiqueta.jpg', ['eng', 'spa'], return_data='dict')
-print(result['text'])
-```
-
-### 4. OCR en regiones específicas (ROI)
+### 3. OCR en regiones específicas (ROI)
 Extrae texto solo de una parte de la imagen, útil para formularios o layouts fijos.
 
 ```python
 roi = (50, 100, 200, 50)  # x, y, w, h
-texto = read_image('formulario.png', lang='spa', preprocess_opts={'roi': roi})
+texto = read_image_es('formulario.png', preprocess_opts={'roi': roi})
 ```
 
-### 5. Automatización de flujos de trabajo
+### 4. Automatización de flujos de trabajo
 Guarda automáticamente el texto extraído para su posterior procesamiento o integración con otros sistemas.
 
 ```python
-texto = read_image('ticket.jpg', lang='spa')
+texto = read_image_es('ticket.jpg')
 if texto:
     save_text_to_file(texto, 'ticket.txt')
 ```
 
-### 6. Visualización y ajuste de preprocesamiento
+### 5. Visualización y ajuste de preprocesamiento
 Ajusta parámetros y visualiza el resultado para mejorar la precisión del OCR.
 
 ```python
